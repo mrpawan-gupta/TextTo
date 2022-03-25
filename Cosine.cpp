@@ -12,6 +12,19 @@ string readFileIntoString(const string &path){
     readString << input_file.rdbuf();
     return readString.str();
 }
+/* ----- Function to Token Vector of String ----- */
+vector<string> ConverstStringTovectorToken(string InputString){
+    vector<string> TokenVector;
+
+    istringstream ireadString(InputString);
+    string s;
+
+    while (ireadString >> s){
+        TokenVector.push_back(s);
+    }
+    return TokenVector;
+}
+
 
 /* ----- Main Function of the Program ----- */
 int main(int argc, char const *argv[]){
@@ -19,9 +32,13 @@ int main(int argc, char const *argv[]){
     string Input1("Sample-Input1.txt");
     string Input2("Sample-Input2.txt");
 
-    string readInput1 = readFileIntoString(Input1);
-    string readInput2 = readFileIntoString(Input2);
+    string ReadInput1 = readFileIntoString(Input1);
+    string ReadInput2 = readFileIntoString(Input2);
 
+    vector<string> vectorReadInput1 = ConverstStringTovector(ReadInput1);
+    vector<string> vectorReadInput2 = ConverstStringTovector(ReadInput2);
+
+    
 
     exit(EXIT_SUCCESS);
 
