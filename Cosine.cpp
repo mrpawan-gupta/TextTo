@@ -43,6 +43,23 @@ set<string> ConverstStringToSetTokens(string InputString, string InputString2){
     return TokenSet;
 }
 
+/* ----- Function to Count the Frequency of Terms of Input string ----- */
+map<string, int> CountTermFrequency(vector<string> input, set<string> setToken){
+    map<string, int> Term;
+    for (int i = 0; i < input.size(); i++) {
+        Term[input[i]]++;
+    }
+    set<string, greater<string>>::iterator itr;
+
+    for (itr = setToken.begin(); itr != setToken.end(); itr++) {
+        string check = *itr;
+        if (Term.find(check) == Term.end()){
+            Term.insert(pair<string, int>(check, 0));
+        }
+    }
+    return Term;
+}
+
 
 /* ----- Main Function of the Program ----- */
 int main(int argc, char const *argv[]){
@@ -58,7 +75,11 @@ int main(int argc, char const *argv[]){
 
     set<string> setToken = ConverstStringToSetTokens(ReadInput1, ReadInput2);
 
+    map<string, int> Input1Frequency = CountTermFrequency(vectorReadInput1, setToken);
+    map<string, int> Input2Frequency = CountTermFrequency(vectorReadInput2, setToken);
+
     
+
     exit(EXIT_SUCCESS);
 
     return 0;
