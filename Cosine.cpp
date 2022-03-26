@@ -60,32 +60,35 @@ map<string, int> CountTermFrequency(vector<string> input, set<string> setToken){
     return Term;
 }
 
+int dotProduct(vector<int> v1, vector<int> v2){
+    int product = 0;
+    for (int i = 0; i < v1.size(); ++i){
+        product += v1[i] * v2[i];
+    }
+    return product;
+}
+
+double magnitude(vector<int> v){
+    return std::sqrt(dotProduct(v, v));
+}
+
 void CosineSimilarity(map<string, int> M1, map<string, int> M2){
 
-    vector<long long> A;
-    vector<long> B;
+    vector<int> v1;
+    vector<int> v2;
 
     map<string, int>::iterator itr;
     for (itr = M1.begin(); itr != M1.end(); itr++){
-        A.push_back(itr->second);
+        v1.push_back(itr->second);
     }
     for (itr = M2.begin(); itr != M2.end(); itr++){
-        B.push_back(itr->second);
+        v2.push_back(itr->second);
     }
 
-    long long int dot = 0;
-    long long int vectorA = 0;
-    long long int vectorB = 0;
+    int DotProduct = dotProduct(v1, v2);
+    double Magnitude = magnitude(v1) * magnitude(v2);
 
-    for (int i = 0; i < A.size(); i++){
-        dot += (A[i] * B[i]);
-        vectorA += (A[i] * A[i]);
-    }
-    for (int i = 0; i < A.size(); i++){
-        vectorB += (B[i] * B[i]);
-    }
-
-    double cosine = dot / sqrt(vectorA * vectorB);
+    double cosine = DotProduct / Magnitude;
 
     cout << "The Cosine Similarity Between Document A and B is : " << cosine << endl;
 }
