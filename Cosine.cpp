@@ -60,6 +60,7 @@ map<string, int> CountTermFrequency(vector<string> input, set<string> setToken){
     return Term;
 }
 
+/* ----- Function for fing Dot Product of Two Vectors ----- */
 int dotProduct(vector<int> v1, vector<int> v2){
     int product = 0;
     for (int i = 0; i < v1.size(); ++i){
@@ -70,6 +71,12 @@ int dotProduct(vector<int> v1, vector<int> v2){
 
 double magnitude(vector<int> v){
     return std::sqrt(dotProduct(v, v));
+}
+
+void writeResult(const char *filename, double result){
+    std::ofstream file(filename);
+    file << "The Cosine Similarity In Document1 and Document2 is :- " << result << std::endl;
+    file.close();
 }
 
 void CosineSimilarity(map<string, int> M1, map<string, int> M2){
@@ -90,7 +97,8 @@ void CosineSimilarity(map<string, int> M1, map<string, int> M2){
 
     double cosine = DotProduct / Magnitude;
 
-    cout << "The Cosine Similarity Between Document A and B is : " << cosine << endl;
+    writeResult("Sample-Output.txt", cosine);
+    
 }
 /* ----- Main Function of the Program ----- */
 int main(int argc, char const *argv[]){
