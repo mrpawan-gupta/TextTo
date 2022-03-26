@@ -60,7 +60,35 @@ map<string, int> CountTermFrequency(vector<string> input, set<string> setToken){
     return Term;
 }
 
+void CosineSimilarity(map<string, int> M1, map<string, int> M2){
 
+    vector<long long> A;
+    vector<long> B;
+
+    map<string, int>::iterator itr;
+    for (itr = M1.begin(); itr != M1.end(); itr++){
+        A.push_back(itr->second);
+    }
+    for (itr = M2.begin(); itr != M2.end(); itr++){
+        B.push_back(itr->second);
+    }
+
+    long long int dot = 0;
+    long long int vectorA = 0;
+    long long int vectorB = 0;
+
+    for (int i = 0; i < A.size(); i++){
+        dot += (A[i] * B[i]);
+        vectorA += (A[i] * A[i]);
+    }
+    for (int i = 0; i < A.size(); i++){
+        vectorB += (B[i] * B[i]);
+    }
+
+    double cosine = dot / sqrt(vectorA * vectorB);
+
+    cout << "The Cosine Similarity Between Document A and B is : " << cosine << endl;
+}
 /* ----- Main Function of the Program ----- */
 int main(int argc, char const *argv[]){
 
@@ -78,7 +106,7 @@ int main(int argc, char const *argv[]){
     map<string, int> Input1Frequency = CountTermFrequency(vectorReadInput1, setToken);
     map<string, int> Input2Frequency = CountTermFrequency(vectorReadInput2, setToken);
 
-    
+    CosineSimilarity(Input1Frequency, Input2Frequency);
 
     exit(EXIT_SUCCESS);
 
