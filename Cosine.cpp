@@ -24,6 +24,25 @@ vector<string> ConverstStringTovectorToken(string InputString){
     }
     return TokenVector;
 }
+/* ----- Function to Create Set of Tokens in Input String ----- */
+set<string> ConverstStringToSetTokens(string InputString, string InputString2){
+    set<string> TokenSet;
+
+    istringstream ireadString(InputString);
+    string str;
+
+    while (ireadString >> str){
+        TokenSet.insert(str);
+    }
+    istringstream ireadString2(InputString2);
+    string str2;
+
+    while (ireadString2 >> str2){
+        TokenSet.insert(str2);
+    }
+    return TokenSet;
+}
+
 
 /* ----- Main Function of the Program ----- */
 int main(int argc, char const *argv[]){
@@ -37,8 +56,9 @@ int main(int argc, char const *argv[]){
     vector<string> vectorReadInput1 = ConverstStringTovectorToken(ReadInput1);
     vector<string> vectorReadInput2 = ConverstStringTovectorToken(ReadInput2);
 
-    
+    set<string> setToken = ConverstStringToSetTokens(ReadInput1, ReadInput2);
 
+    
     exit(EXIT_SUCCESS);
 
     return 0;
