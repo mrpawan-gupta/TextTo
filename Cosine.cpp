@@ -25,7 +25,6 @@ vector<string> ConverstStringTovectorToken(string InputString){
     return TokenVector;
 }
 
-
 /* ----- Main Function of the Program ----- */
 int main(int argc, char const *argv[]){
 
@@ -35,8 +34,8 @@ int main(int argc, char const *argv[]){
     string ReadInput1 = readFileIntoString(Input1);
     string ReadInput2 = readFileIntoString(Input2);
 
-    vector<string> vectorReadInput1 = ConverstStringTovector(ReadInput1);
-    vector<string> vectorReadInput2 = ConverstStringTovector(ReadInput2);
+    vector<string> vectorReadInput1 = ConverstStringTovectorToken(ReadInput1);
+    vector<string> vectorReadInput2 = ConverstStringTovectorToken(ReadInput2);
 
     
 
